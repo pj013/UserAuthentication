@@ -44,4 +44,8 @@ public class AuthController {
     public List<User> user() {
         return userRepository.findAll();
     }
+    @GetMapping("/test")
+    public String testAuthentication() {
+        return "JWT authentication successful!";
+    }
 }
