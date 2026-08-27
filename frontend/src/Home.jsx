@@ -2,6 +2,7 @@ import { useState } from "react";
 import Login from "./login";
 import Register from "./register";
 import Dashboard from "./Dashboard";
+import ServiceRequests from "./ServiceRequests";
 
 function Home() {
     const [page, setPage] = useState("home");
@@ -13,6 +14,7 @@ function Home() {
     };
 
     const handleLogout = () => {
+        localStorage.removeItem("token");
         setUser(null);
         setPage("home");
     };
@@ -38,11 +40,21 @@ function Home() {
         );
     }
 
+    if (page === "requests") {
+        return (
+            <ServiceRequests
+                onBack={() => setPage("dashboard")}
+                onLogout={handleLogout}
+            />
+        );
+    }
+
     if (page === "dashboard") {
         return (
             <Dashboard
                 user={user}
                 onLogout={handleLogout}
+                onRequests={() => setPage("requests")}
             />
         );
     }
