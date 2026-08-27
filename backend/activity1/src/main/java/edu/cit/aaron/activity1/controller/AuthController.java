@@ -2,6 +2,7 @@ package edu.cit.aaron.activity1.controller;
 
 import edu.cit.aaron.activity1.model.User;
 import edu.cit.aaron.activity1.service.AuthService;
+import edu.cit.aaron.activity1.service.LoginResponse;
 import org.springframework.web.bind.annotation.*;
 import edu.cit.aaron.activity1.repository.UserRepository;
 
@@ -31,7 +32,7 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public User login(@RequestBody Map<String, String> request) {
+    public LoginResponse login(@RequestBody Map<String, String> request) {
 
         return authService.login(
                 request.get("email"),
