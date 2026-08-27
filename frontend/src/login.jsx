@@ -34,6 +34,8 @@ function Login({ onLogin, onBack }) {
 
         console.log("Login successful:", data);
 
+        localStorage.setItem("token", data.token);
+
         onLogin(data);
 
     } catch (error) {
